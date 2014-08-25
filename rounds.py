@@ -71,9 +71,18 @@ def data():
     form.data_Id.data = random.randint(1000, 9999)
     if request.method == 'POST':
         if form.validate_on_submit():
-            ImportedData = form.patientData.data
-            print ImportedData
-            flash('data imported. Now use your app')
+            from StringIO import StringIO
+            inputIO = StringIO(form.patientData.data)
+            import csv
+            for line in csv.reader(inputIO, delimiter='\t'):
+                new_patient = Item(line[2], line[4], line[10], line[5], line[3])
+                print 'name ' + new_patient.firstname
+                print 'ward ' + new_patient.ward
+                print 'mrn ' + new_patient.mrn
+                print 'attending ' + new_patient.attending
+                print 'patientNotes ' + new_patient.patientNotes
+
+            flash('data imported. Now use your app to import')
             return render_template("home.html", form=form)
         else:
             return render_template("home.html", form=form, error=error)
