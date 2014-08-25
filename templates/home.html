@@ -1,0 +1,42 @@
+{% extends "template.html" %}
+{% block content %}
+
+  <h1>Welcome to My Place</h1>
+  <div class="add-item">
+    <h3>Add a new item:</h3>
+      <form class="form-inline" action="{{ url_for('data') }}" method="post">
+        {{ form.csrf_token }}
+        <p>
+        <p>
+        {{ form.data_Id.label }} : {{ form.data_Id(placeholder="1") }}
+
+        <span class="error">
+          {% if form.data_Id.errors %}
+            {% for error in form.data_Id.errors %}
+              {{ error }}
+            {% endfor %}
+          {% endif %}
+        </span>
+
+        </p>
+        <p>
+        {{ form.patientData(placeholder="patient Data",  cols="150", rows="20") }}
+
+        <span class="error">
+          {% if form.patientData.errors %}
+            {% for error in form.patientData.errors %}
+              {{ error }}
+            {% endfor %}
+          {% endif %}
+        </span>
+
+        </p>
+        <p><button class="btn btn-sm btn-success" type="submit">Submit</button></p>
+      </form>
+  </div>
+
+
+  <br>
+  <br>
+  <div>
+{% endblock %}

@@ -1,0 +1,18 @@
+		BATES, Keelan Edwin	Transit Lounge GOS 01 04	045-48-00	Dawson, Amanda	22 years	06/11/1991	Male	    0.8 Days	Pain, abdominal / POST OP INFECTION
+		JAHNSEN, Maxwell Gordon	Surgical 3 GOS 06 15	026-01-01	Dawson, Amanda	87 years	12/08/1927	Male	    0.7 Days	Pain, abdominal/ INCATCERATED (R) INGUINOSCROTAL HERNIA
+		ROHASIANA, Lolyta	Emergency GOS FT 01 F	050-87-08	Dawson, Amanda	40 years	27/05/1974	Female	    0.2 Days	Abscess/AXILLARY RIGHT ABSCESS
+		HURLEY, Elsie Lilian ada	Surgical 3 GOS 09 24	013-62-09	Vignakaran, Navaratnasothie	87 years	04/06/1927	Female	   10.1 Days	Pain, vaginal/NEW INCONTINENCE /UTI
+		MARMARA, Samuel John	Medical 2 GOS 04 12	050-40-67	Kukard, Craig	63 years	06/10/1950	Male	   14.1 Days	Vomiting / CHEMO INDUCED VOMITING
+		WILSON, Julie Anne	Medical 2 GOS 02 05	018-62-92	Tiley, Susan	49 years	29/01/1965	Female	    1.7 Days	Unwell/INCREASED CONFUSION RECENT DIAG BRAIN METS (YESTERDAY)
+
+
+				01	THOMPSON, Meagan	030-88-59	18/08/1969	45 years	Female	    5.0 Days	20/08/2014 13:30	 	General Surgery	Pallas, Martin J	Dawson, Amanda	Pain, flank/ABDO PAIN ? CAUSE RASH
+				02	PAY, Linda Jane	034-93-61	28/10/1965	48 years	Female	   19.9 Days	05/08/2014 16:34	 	Rheumatology	Willcocks, Julian	Baume, Robert	Care - patient review/RHEUMATOID ARTHRITIS FOR PAIN MANAGEMENT
+				03	HOLLOWAY, Susanne Jane	034-83-61	27/06/1957	57 years	Female	    7.8 Days	17/08/2014 19:57	 	Gastroenterology	Pallas, Martin J	Singh, Satbir	Apparently drunk / DIARRHOES, FALL WHILE INTOXICATED
+
+
+
+		BATES, Keelan Edwin	045-48-00	Transit Lounge GOS 01 04	06/11/1991	22 years	Male	    0.8 Days	24/08/2014 20:30	Acute Surgical Unit	Dawson, Amanda	Pain, abdominal / POST OP INFECTION
+		ROHASIANA, Lolyta	050-87-08	Emergency GOS FT 01 F	27/05/1974	40 years	Female	    0.2 Days	25/08/2014 9:21	Acute Surgical Unit	Dawson, Amanda	Abscess/AXILLARY RIGHT ABSCESS
+		FOSTER, Drew Thomas	064-96-63	Childrens GOS 03 06P	26/06/2004	10 years	Male	    0.2 Days	25/08/2014 10:38	Acute Surgical Unit	Dawson, Amanda	lap chole operative cholangiogram
+		JAHNSEN, Maxwell Gordon	026-01-01	Surgical 3 GOS 06 15	12/08/1927	87 years	Male	    0.7 Days	24/08/2014 22:29	Acute Surgical Unit	Dawson, Amanda	Pain, abdominal/ INCATCERATED (R) INGUINOSCROTAL HERNIA
