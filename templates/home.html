@@ -1,14 +1,15 @@
 {% extends "template.html" %}
 {% block content %}
 
-  <h1>Welcome to My Place</h1>
+  <h1>Rounds</h1>
   <div class="add-item">
-    <h3>Add a new item:</h3>
+    <h3>Import data to your device:</h3>
+      <div class="container"> 
       <form class="form-inline" action="{{ url_for('data') }}" method="post">
         {{ form.csrf_token }}
         <p>
         <p>
-        {{ form.data_Id.label }} : {{ form.data_Id(placeholder="1") }}
+        <h3> Your Data Id Is: <b>{{ data_Id }} </b></h3>
 
         <span class="error">
           {% if form.data_Id.errors %}
@@ -20,7 +21,7 @@
 
         </p>
         <p>
-        {{ form.patientData(placeholder="patient Data",  cols="150", rows="20") }}
+        {{ form.patientData(placeholder="patient Data",  cols="120", rows="20") }}
 
         <span class="error">
           {% if form.patientData.errors %}
@@ -33,6 +34,7 @@
         </p>
         <p><button class="btn btn-sm btn-success" type="submit">Submit</button></p>
       </form>
+  </div>
   </div>
 
 

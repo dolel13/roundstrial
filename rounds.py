@@ -78,7 +78,7 @@ def data():
         else:
             return render_template("home.html", form=form, error=error)
     if request.method == 'GET':
-        return render_template("home.html", form=form)
+        return render_template("home.html", form=form, data_Id=random.randint(1000, 9999))
 
 
 
