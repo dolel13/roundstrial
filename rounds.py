@@ -139,8 +139,8 @@ class PatientsAPI(Resource):
     @marshal_with(patient_fields)
     def get(self, data_id):
         results = db.session.query(Item).filter_by(data_id=data_id).all()
-        #db.session.query(Item).filter_by(data_id=data_id).delete()
-        #db.session.commit()
+        db.session.query(Item).filter_by(data_id=data_id).delete()
+        db.session.commit()
         return results
 
         # curl -i -H "Content-Type: application/json" -X GET http://localhost:5000/api/v1.0/patients/2915
