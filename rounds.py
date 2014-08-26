@@ -87,6 +87,9 @@ def data():
                 surnamesplit = line[5].partition(',')[0]
                 bedsplit = line[3][-5:]
                 wardsplit = line[3][:-10]
+                firstword = wardsplit.partition(' ')[0]
+                firstword = firstword[0]
+                wardsplit = firstword + wardsplit.partition(' ')[2]
                 print namesplit
                 print surnamesplit
                 print bedsplit
