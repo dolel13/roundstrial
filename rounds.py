@@ -82,26 +82,20 @@ def data():
             inputIO = StringIO(form.patientData.data)
             import csv
             for line in csv.reader(inputIO, delimiter='\t'):
+                if len(line) < 2:
+                    continue
+                #
+                # in here I need to create a method to filter out a row that has a shitty 
+                #  number of tabs or an extra return.
+                # wardsplit = (((line[3][:-10]).partition(' ')[0])[0]) + (line[3][:-10]).partition(' ')[2]
+                # wardsplit = (((x[:-10]).partition(' ')[0])[0]) + (x[:-10]).partition(' ')[2]
                 data_identifier = random.randint(1000, 9999)
                 namesplit = line[2].partition(',')[0]
                 surnamesplit = line[5].partition(',')[0]
                 bedsplit = line[3][-5:]
-                wardsplit = line[3][:-10]
-                firstword = wardsplit.partition(' ')[0]
-                firstword = firstword[0]
-                wardsplit = firstword + wardsplit.partition(' ')[2]
-                print namesplit
-                print surnamesplit
-                print bedsplit
-                print wardsplit
+                wardsplit = (((line[3][:-10]).partition(' ')[0])[0]) + (line[3][:-10]).partition(' ')[2]
                 # patient structure = (firstname, mrn, patientNotes, attending, ward, bed, data_id):
                 new_patient = Item(namesplit, line[4], line[10], surnamesplit, wardsplit, bedsplit, form.data_Id.data)
-                print 'name ' + new_patient.firstname
-                print 'ward ' + new_patient.ward
-                print 'mrn ' + new_patient.mrn
-                print 'attending ' + new_patient.attending
-                print 'patientNotes ' + new_patient.patientNotes
-                print new_patient.data_id
                 db.session.add(new_patient)
                 db.session.commit()
             flash('data imported. Now use your app to import')
