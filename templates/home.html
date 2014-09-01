@@ -9,15 +9,9 @@
         {{ form.csrf_token }}
         <p>
         <p>
+        {% if data_Id %}
         <h3> Your Data Id Is: <b>{{ data_Id }} </b></h3>
-
-        <span class="error">
-          {% if form.data_Id.errors %}
-            {% for error in form.data_Id.errors %}
-              {{ error }}
-            {% endfor %}
-          {% endif %}
-        </span>
+        {% endif %}
 
         </p>
         <p>

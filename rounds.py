@@ -11,6 +11,7 @@ from flask_wtf import Form
 from wtforms import TextAreaField, IntegerField
 from wtforms.validators import DataRequired
 from flask.ext.restful import Resource, Api, reqparse, fields, marshal_with, marshal
+import os.path as op
 import random
 
 
@@ -55,7 +56,7 @@ class Item(db.Model):
 ################
 
 class ImportData(Form):
-    data_Id = IntegerField('Your Data ID is', default=random.randint(1000, 9999), validators=[DataRequired()])
+    # data_Id = IntegerField('Your Data ID is', default="", validators=[DataRequired()])
     patientData = TextAreaField('Patient data', default="", validators=[DataRequired()])
 
 
@@ -78,6 +79,7 @@ def data():
     if request.method == 'POST':
         #pdb.set_trace()
         if form.validate_on_submit():
+            data_identifier = random.randint(1000, 9999)
             from StringIO import StringIO
             inputIO = StringIO(form.patientData.data)
             import csv
@@ -89,21 +91,21 @@ def data():
                 #  number of tabs or an extra return.
                 # wardsplit = (((line[3][:-10]).partition(' ')[0])[0]) + (line[3][:-10]).partition(' ')[2]
                 # wardsplit = (((x[:-10]).partition(' ')[0])[0]) + (x[:-10]).partition(' ')[2]
-                data_identifier = random.randint(1000, 9999)
+                
                 namesplit = line[2].partition(',')[0]
                 surnamesplit = line[5].partition(',')[0]
                 bedsplit = line[3][-5:]
                 wardsplit = (((line[3][:-10]).partition(' ')[0])[0]) + (line[3][:-10]).partition(' ')[2]
                 # patient structure = (firstname, mrn, patientNotes, attending, ward, bed, data_id):
-                new_patient = Item(namesplit, line[4], line[10], surnamesplit, wardsplit, bedsplit, form.data_Id.data)
+                new_patient = Item(namesplit, line[4], line[10], surnamesplit, wardsplit, bedsplit, data_identifier)
                 db.session.add(new_patient)
                 db.session.commit()
             flash('data imported. Now use your app to import')
-            return render_template("home.html", form=form, data_Id = form.data_Id.data)
+            return render_template("home.html", form=form, data_Id = data_identifier)
         else:
             return render_template("home.html", form=form, error=error)
     if request.method == 'GET':
-        return render_template("home.html", form=form, data_Id = form.data_Id.data)
+        return render_template("home.html", form=form, data_Id = "")
 
 
 
@@ -119,6 +121,7 @@ patient_fields = {
     'attending' : fields.String,
     'ward' : fields.String,
     'bed' : fields.String,
+    'data_id' : fields.String,
 }
 
 class PatientsAPI(Resource):
@@ -131,6 +134,7 @@ class PatientsAPI(Resource):
         self.reqparse.add_argument('attending', type = str, default = "", location = 'json')
         self.reqparse.add_argument('ward', type = str, default = "", location = 'json')
         self.reqparse.add_argument('bed', type = str, default = "", location = 'json')
+        self.reqparse.add_argument('data_id', type = str, default = "", location = 'json')
         super(PatientsAPI, self).__init__()
 
     @marshal_with(patient_fields)
@@ -152,6 +156,7 @@ class AllPatientsAPI(Resource):
         self.reqparse.add_argument('attending', type = str, default = "", location = 'json')
         self.reqparse.add_argument('ward', type = str, default = "", location = 'json')
         self.reqparse.add_argument('bed', type = str, default = "", location = 'json')
+        self.reqparse.add_argument('data_id', type = str, default = "", location = 'json')
         super(AllPatientsAPI, self).__init__()
 
     @marshal_with(patient_fields)
@@ -163,6 +168,8 @@ class AllPatientsAPI(Resource):
 
 api.add_resource(PatientsAPI, '/api/v1.0/patients/<int:data_id>', endpoint='patientsAPI')
 api.add_resource(AllPatientsAPI, '/api/v1.0/patients/', endpoint='AllPatients') #curl -i http://localhost:5000/api/v1.0/items
+
+
 
 
 
